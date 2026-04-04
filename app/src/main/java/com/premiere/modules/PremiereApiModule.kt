@@ -2,6 +2,12 @@ package com.premiere.modules
 
 import com.premiere.api.PremiereApi
 import com.premiere.api.createPremiereApi
+import com.premiere.repository.ConfigRepository
+import com.premiere.repository.GenresRepository
+import com.premiere.repository.MoviesRepository
+import com.premiere.repository.impl.ConfigRepositoryImpl
+import com.premiere.repository.impl.GenresRepositoryImpl
+import com.premiere.repository.impl.MoviesRepositoryImpl
 import de.jensklingenberg.ktorfit.Ktorfit
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.android.Android
@@ -36,5 +42,17 @@ val premiereModule = module {
 
     single<PremiereApi> {
         get<Ktorfit>().createPremiereApi()
+    }
+
+    single<MoviesRepository> {
+        MoviesRepositoryImpl(get())
+    }
+
+    single<GenresRepository> {
+        GenresRepositoryImpl(get())
+    }
+
+    single<ConfigRepository> {
+        ConfigRepositoryImpl(get())
     }
 }
