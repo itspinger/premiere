@@ -6,7 +6,9 @@ import com.premiere.model.MovieSummary
 import com.premiere.model.PaginatedResponse
 import com.premiere.model.Person
 import com.premiere.model.Video
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class MovieFilters(
     val query: String? = null,
     val genreId: Int? = null,
